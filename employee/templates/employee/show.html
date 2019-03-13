@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Records</title>
+     {% load staticfiles %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<table class="table">
+    <thead class="thead-light">
+    <tr>
+        <th>Employee ID</th>
+        <th>Employee Name</th>
+        <th>Employee Email</th>
+        <th>Employee Contact</th>
+        <th>Employee Designation</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+{% for employee in employees.all %}
+    <tr>
+        <td>{{ employee.emp_id }}</td>
+        <td>{{ employee.emp_name }}</td>
+        <td>{{ employee.emp_email }}</td>
+        <td>{{ employee.emp_contact }}</td>
+        <td>{{ employee.emp_designation }}</td>
+        <td>
+            <a href="/edit/{{ employee.id }}"><span class="glyphicon glyphicon-pencil" ></span></a>
+            <a href="/delete/{{ employee.id }}"><span class="glyphicon glyphicon-trash"></span></a>
+        </td>
+    </tr>
+{% endfor %}
+    </tbody>
+</table>
+<br>
+<br>
+<center><a href="/employee" class="btn btn-primary">Add New Record</a></center>
+</body>
+</html>
